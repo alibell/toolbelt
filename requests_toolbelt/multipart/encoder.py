@@ -432,6 +432,10 @@ def total_len(o):
     if hasattr(o, 'len'):
         return o.len
 
+    # Support ZipExtFile file
+    if hasattr(o, "_orig_file_size"):
+        return o._orig_file_size
+
     if hasattr(o, 'fileno'):
         try:
             fileno = o.fileno()
